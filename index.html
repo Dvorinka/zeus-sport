@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zeus Sport | Specialista na týmové sporty</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/smooth-scroll/16.1.3/smooth-scroll.min.js"></script>
+    <style>
+        :root {
+            --zeus-red: #ff1e1e;
+            --zeus-blue: #161b38;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        .hero {
+            background-image: linear-gradient(rgba(22, 27, 56, 0.85), rgba(22, 27, 56, 0.85)), url("https://www.claudeusercontent.com/api/placeholder/1920/1080");
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .team-img {
+            transition: transform 0.3s ease;
+        }
+        
+        .team-img:hover {
+            transform: scale(1.05);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #ff1e1e;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .product-card {
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-bottom: 3px solid #ff1e1e;
+        }
+
+        .counter {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .btn-zeus {
+            background-color: #ff1e1e;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-zeus:hover {
+            background-color: #e01313;
+            transform: translateY(-2px);
+        }
+        
+        .section-divider {
+            height: 4px;
+            width: 80px;
+            background-color: #ff1e1e;
+            margin: 0 auto;
+        }
+        
+        .sport-bg {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .sport-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("https://www.claudeusercontent.com/api/placeholder/1920/1080");
+            background-size: cover;
+            background-position: center;
+            opacity: 0.05;
+            z-index: -1;
+        }
+        .hover-3d {
+            transition: transform 0.3s ease;
+            transform-style: preserve-3d;
+        }
+
+        .hover-3d:hover {
+            transform: translateY(-5px) rotateX(5deg);
+        }
+
+        .gradient-text {
+            background: linear-gradient(45deg, #ff1e1e, #ff4b4b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+
+        .card-shine {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-shine::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent,
+                rgba(255, 255, 255, 0.1),
+                transparent
+            );
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
+
+        .blur-load {
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .blur-load::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            animation: pulse 2.5s infinite;
+            background: linear-gradient(90deg, #f3f4f6 0%, #e5e7eb 50%, #f3f4f6 100%);
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0; }
+            50% { opacity: 0.7; }
+            100% { opacity: 0; }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #ff1e1e;
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #cc1818;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-gray-800">
+    <!-- Header -->
+    <header class="fixed w-full bg-white shadow-md z-50">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <div class="text-3xl font-bold">
+                        <img src="https://www.zeusport.it/img/logo.png" alt="Zeus Sport Logo" class="h-10">
+                    </div>
+                </div>
+                <nav class="hidden md:flex space-x-8" style="align-items: center;">
+                    <a href="#home" class="nav-link text-gray-700 hover:text-red-600 font-medium">Domů</a>
+                    <a href="#o-nas" class="nav-link text-gray-700 hover:text-red-600 font-medium">O nás</a>
+                    <a href="#produkty" class="nav-link text-gray-700 hover:text-red-600 font-medium">Produkty</a>
+                    <a href="#reference" class="nav-link text-gray-700 hover:text-red-600 font-medium">Reference</a>
+                    <a href="#kontakt" class="nav-link text-gray-700 hover:text-red-600 font-medium">Kontakt</a>
+                    <a href="#" class="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition duration-300">E-shop</a>
+                </nav>
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="menu-toggle" class="focus:outline-none">
+                        <i class="fas fa-bars text-2xl" style="color: #161b38;"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- Mobile menu -->
+            <div id="mobile-menu" class="md:hidden hidden mt-4 pb-2">
+                <div class="flex flex-col space-y-3">
+                    <a href="#home" class="text-gray-700 hover:text-red-600 font-medium">Domů</a>
+                    <a href="#o-nas" class="text-gray-700 hover:text-red-600 font-medium">O nás</a>
+                    <a href="#produkty" class="text-gray-700 hover:text-red-600 font-medium">Produkty</a>
+                    <a href="#reference" class="text-gray-700 hover:text-red-600 font-medium">Reference</a>
+                    <a href="#kontakt" class="text-gray-700 hover:text-red-600 font-medium">Kontakt</a>
+                    <a href="#" class="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition duration-300 inline-block mt-2">E-shop</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero pt-32 pb-20">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <h1 class="text-5xl md:text-6xl font-bold mb-4 text-white">
+                        OBLÉKÁME <span class="text-red-600">ŠAMPIONY</span>
+                    </h1>
+                    <p class="text-lg md:text-xl mb-8 text-gray-300">
+                        Italská sportovní značka s více než 20letou tradicí. Specializujeme se na týmové sporty a dodáváme vybavení do více než 50 zemí světa.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#produkty" class="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300 inline-flex items-center">
+                            <span>PROHLÉDNOUT PRODUKTY</span>
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <a href="#" class="bg-transparent border-2 border-red-600 hover:bg-red-600 hover:bg-opacity-20 text-white font-bold py-3 px-8 rounded-lg transition duration-300 inline-flex items-center">
+                            <span>VSTOUPIT DO E-SHOPU</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="https://www.claudeusercontent.com/api/placeholder/800/600" alt="Zeus Sport týmové vybavení" class="rounded-lg shadow-lg transform rotate-2 border-4 border-red-600">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section style="background-color: #161b38;" class="py-16 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <img src="https://www.claudeusercontent.com/api/placeholder/1920/1080" alt="Sport Background" class="w-full h-full object-cover">
+        </div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-8 text-center">
+                <div class="p-4">
+                    <div class="text-5xl font-bold text-white mb-2 counter" data-count="1999">0</div>
+                    <div class="w-16 h-1 bg-red-600 mx-auto my-3"></div>
+                    <p class="text-white text-lg uppercase tracking-wider">Založeno</p>
+                </div>
+                <div class="p-4">
+                    <div class="text-5xl font-bold text-white mb-2 counter" data-count="50">0</div>
+                    <div class="w-16 h-1 bg-red-600 mx-auto my-3"></div>
+                    <p class="text-white text-lg uppercase tracking-wider">Zemí exportu</p>
+                </div>
+                <div class="p-4">
+                    <div class="text-5xl font-bold text-white mb-2">24h</div>
+                    <div class="w-16 h-1 bg-red-600 mx-auto my-3"></div>
+                    <p class="text-white text-lg uppercase tracking-wider">Expedice</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="o-nas" class="py-20 sport-bg">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">O SPOLEČNOSTI <span class="text-red-600">ZEUS SPORT</span></h2>
+                <div class="w-20 h-1 bg-red-600 mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Značka Zeus Sport začala své působení ve světě sportu v roce 1999 v Torre Annunziata (Neapol, Itálie).
+                </p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <div class="relative">
+                        <img src="https://www.claudeusercontent.com/api/placeholder/800/600" alt="Zeus Sport historie" class="rounded-lg shadow-lg border-2" style="border-color: #161b38;">
+                        <div class="absolute -bottom-4 -right-4 bg-red-600 text-white py-2 px-4 rounded-lg shadow-lg">
+                            <span class="font-bold">OD ROKU 1999</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2 md:pl-12">
+                    <h3 class="text-2xl font-bold mb-4" style="color: #161b38;">NÁŠ PŘÍBĚH</h3>
+                    <p class="text-gray-700 mb-4">
+                        Zeus Sport byl založen týmem mladých a ambiciózních podnikatelů, kteří chtěli dosáhnout nejvyšší úrovně ve fotbalu a týmových sportech. Nejprve jako dodavatel fotbalového vybavení pro akademie a amatéry, značka rozšířila nabídku na všechny týmové sporty, dodávající týmové oblečení, doplňky a vybavení.
+                    </p>
+                    <p class="text-gray-700 mb-6">
+                        Po téměř 20 letech od svého vzniku je Zeus známou značkou, která exportuje do více než 50 zemí světa a může se pochlubit více než 50 hrdými zaměstnanci. Úspěch Zeus byl známý díky vzácné a přesné péči, kterou poskytuje svým zákazníkům, přípravě a plnění objednávek do 24 hodin.
+                    </p>
+                    
+                    <h3 class="text-2xl font-bold mb-4" style="color: #161b38;">NAŠE SMĚRY ROZVOJE</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start bg-white p-3 rounded-lg shadow-sm border-l-4 border-red-600">
+                            <i class="fas fa-globe text-red-600 text-xl mt-1 mr-3"></i>
+                            <span class="font-medium">Rozšíření na nové rozvíjející se trhy</span>
+                        </li>
+                        <li class="flex items-start bg-white p-3 rounded-lg shadow-sm border-l-4 border-red-600">
+                            <i class="fas fa-tshirt text-red-600 text-xl mt-1 mr-3"></i>
+                            <span class="font-medium">Inovace v látkách, produktech a stylu</span>
+                        </li>
+                        <li class="flex items-start bg-white p-3 rounded-lg shadow-sm border-l-4 border-red-600">
+                            <i class="fas fa-users text-red-600 text-xl mt-1 mr-3"></i>
+                            <span class="font-medium">Kompletní organizace z hlediska zaměstnanců a nových struktur</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-12">
+            <a href="#" class="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300 inline-flex items-center">
+                <span>Zobrazit celý katalog</span>
+                <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+    </section>
+
+
+
+
+    <!-- References Section -->
+    <section id="reference" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Naše <span class="text-red-600">reference</span></h2>
+                <div class="w-20 h-1 bg-red-600 mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Máme tu čest oblékat významné týmy po celém světě. Podívejte se na naše nejvýznamnější spolupráce.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-8">
+                <div class="bg-white p-4 rounded-lg shadow-md flex items-center justify-center h-32 hover:shadow-lg transition-shadow">
+                    <img src="https://www.claudeusercontent.com/api/placeholder/200/100" alt="US Salernitana" class="max-h-16 transform hover:scale-110 transition-transform">
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-md flex items-center justify-center h-32 hover:shadow-lg transition-shadow">
+                    <img src="https://www.claudeusercontent.com/api/placeholder/200/100" alt="US Salernitana" class="max-h-16 transform hover:scale-110 transition-transform">
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-md flex items-center justify-center h-32 hover:shadow-lg transition-shadow">
+                    <img src="https://www.claudeusercontent.com/api/placeholder/200/100" alt="US Salernitana" class="max-h-16 transform hover:scale-110 transition-transform">
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-md flex items-center justify-center h-32 hover:shadow-lg transition-shadow">
+                    <img src="https://www.claudeusercontent.com/api/placeholder/200/100" alt="US Salernitana" class="max-h-16 transform hover:scale-110 transition-transform">
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-md flex items-center justify-center h-32 hover:shadow-lg transition-shadow">
+                    <img src="https://www.claudeusercontent.com/api/placeholder/200/100" alt="US Salernitana" class="max-h-16 transform hover:scale-110 transition-transform">
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-md flex items-center justify-center h-32 hover:shadow-lg transition-shadow">
+                    <img src="https://www.claudeusercontent.com/api/placeholder/200/100" alt="US Salernitana" class="max-h-16 transform hover:scale-110 transition-transform">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+<section class="bg-red-600 py-20">
+    <div class="container mx-auto px-4 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white">Potřebujete vybavení pro váš tým?</h2>
+        <p class="text-xl text-white mb-8 max-w-3xl mx-auto">
+            Kontaktujte nás a získejte nezávaznou nabídku šitou na míru vašim potřebám.
+        </p>
+        <a href="#kontakt" class="bg-white hover:bg-gray-100 text-red-600 font-bold py-3 px-8 rounded-lg transition duration-300 inline-flex items-center">
+            <span>Kontaktujte nás</span>
+            <i class="fas fa-arrow-right ml-2"></i>
+        </a>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="kontakt" class="py-20">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Kontaktujte <span class="text-red-600">nás</span></h2>
+            <div class="w-20 h-1 bg-red-600 mx-auto mb-6"></div>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                Máte zájem o naše produkty nebo potřebujete více informací? Neváhejte nás kontaktovat.
+            </p>
+        </div>
+            <div class="lg:w-1/2 lg:pl-8" style="width: 100% !important;">
+                <div class="bg-white p-8 rounded-lg shadow-md h-full">
+                    <h3 class="text-2xl font-bold mb-6">Kontaktní informace</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mr-4">
+                                <i class="fas fa-map-marker-alt text-red-600 text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">Adresa</h4>
+                                <p class="text-gray-600">WHS sport s.r.o.<br>Nové sady 988/2<br>602 00 BRNO</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mr-4">
+                                <i class="fas fa-phone-alt text-red-600 text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">Telefon</h4>
+                                <p class="text-gray-600">+420 123 456 789</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mr-4">
+                                <i class="fas fa-envelope text-red-600 text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">E-mail</h4>
+                                <p class="text-gray-600">info@whssport.cz</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mr-4">
+                                <i class="fas fa-clock text-red-600 text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">Otevírací doba</h4>
+                                <p class="text-gray-600">Po - Pá: 9:00 - 17:00<br>So - Ne: Zavřeno</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-8">
+                        <h4 class="font-bold mb-4">Sledujte nás</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="bg-red-600 hover:bg-red-700 text-white w-10 h-10 rounded-full flex items-center justify-center transition duration-300">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="bg-red-600 hover:bg-red-700 text-white w-10 h-10 rounded-full flex items-center justify-center transition duration-300">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="bg-red-600 hover:bg-red-700 text-white w-10 h-10 rounded-full flex items-center justify-center transition duration-300">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="bg-red-600 hover:bg-red-700 text-white w-10 h-10 rounded-full flex items-center justify-center transition duration-300">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-white pt-16 pb-8">
+    <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-6 md:mb-0">
+                <div class="flex items-center">
+                    <img src="https://www.zeusport.it/img/logo_footer.png" alt="Zeus Sport Logo" class="h-10 mr-3">
+                </div>
+                <p class="text-gray-400 mt-2">
+                    <a href="https://www.tdvorak.dev/" target="_blank">© 2025 TDvorak</a> | Všechna práva vyhrazena<br>
+                    Zastupující společnost: WHS sport s.r.o., IČO: 198 66 291
+                </p>
+            </div>
+            <div class="flex space-x-6 items-center">
+                <a href="#" class="text-gray-400 hover:text-red-600 transition duration-300">Domů</a>
+                <a href="#o-nas" class="text-gray-400 hover:text-red-600 transition duration-300">O nás</a>
+                <a href="#produkty" class="text-gray-400 hover:text-red-600 transition duration-300">Produkty</a>
+                <a href="#kontakt" class="text-gray-400 hover:text-red-600 transition duration-300">Kontakt</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Smooth Scroll Initialization -->
+<script>
+    const scroll = new SmoothScroll('a[href*="#"]', {
+        speed: 1000,
+        speedAsDuration: true
+    });
+</script>
+<script>
+// Mobile menu functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuToggle.addEventListener('click', function() {
+        mobileMenu.classList.toggle('hidden');
+    });
+
+    // Counter animation
+    const counters = document.querySelectorAll('.counter');
+    const speed = 200; // Animation speed
+
+    const startCounting = (counter) => {
+        const target = parseInt(counter.getAttribute('data-count'));
+        const count = +counter.innerText;
+        const increment = target / speed;
+
+        if (count < target) {
+            counter.innerText = Math.ceil(count + increment);
+            setTimeout(() => startCounting(counter), 1);
+        } else {
+            counter.innerText = target;
+        }
+    };
+
+    // Intersection Observer for counter animation
+    const observerOptions = {
+        threshold: 0.5
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const counter = entry.target;
+                startCounting(counter);
+                observer.unobserve(counter);
+            }
+        });
+    }, observerOptions);
+
+    counters.forEach(counter => {
+        counter.innerText = '0';
+        observer.observe(counter);
+    });
+});
+</script>
+<script>
+    // Initialize AOS (Animate On Scroll)
+    AOS.init({
+        duration: 1200,
+        once: true
+    });
+
+    // Initialize Swiper
+    const swiper = new Swiper('.swiper-container', {
+        loop: true,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+</script>
+<script>
+    // GSAP ScrollTrigger
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.utils.toArray('.fade-in').forEach((section) => {
+        gsap.from(section, {
+            scrollTrigger: {
+                trigger: section,
+                start: 'top 80%',
+                toggleActions: 'play none none reverse',
+            },
+            opacity: 0,
+            duration: 1,
+        });
+    });
+</script>
+<script>
+    // GSAP 3D hover effect
+    const cards = document.querySelectorAll('.hover-3d');
+    cards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            gsap.to(card, { rotationY: 10, rotationX: 10, duration: 0.5 });
+        });
+        card.addEventListener('mouseleave', () => {
+            gsap.to(card, { rotationY: 0, rotationX: 0, duration: 0.5 });
+        });
+    });
+</script>
+<script>
+    // GSAP floating effect
+    const floatingElements = document.querySelectorAll('.floating');
+    floatingElements.forEach(element => {
+        gsap.to(element, {
+            y: -10,
+            repeat: -1,
+            yoyo: true,
+            duration: 2,
+            ease: 'power1.inOut',
+        });
+    });
+</script>
+<script>
+    // GSAP shine effect
+    const shineElements = document.querySelectorAll('.card-shine');
+    shineElements.forEach(element => {
+        gsap.to(element, {
+            duration: 2,
+            repeat: -1,
+            backgroundPosition: '200% 0',
+            ease: 'linear',
+        });
+    });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    // Initialize AOS
+    AOS.init({
+        duration: 1000,
+        once: true,
+        offset: 100
+    });
+
+    // GSAP Animations
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Hero Section Animation
+    gsap.from('.hero h1', {
+        duration: 1,
+        y: 100,
+        opacity: 0,
+        ease: 'power4.out'
+    });
+
+    gsap.from('.hero p', {
+        duration: 1,
+        y: 50,
+        opacity: 0,
+        delay: 0.3,
+        ease: 'power4.out'
+    });
+
+    // Stats Counter Enhanced Animation
+    const statsSection = document.querySelector('.stats');
+    const counters = document.querySelectorAll('.counter');
+
+    ScrollTrigger.create({
+        trigger: statsSection,
+        start: 'top center',
+        onEnter: () => {
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-count'));
+                const duration = 2;
+                
+                gsap.to(counter, {
+                    duration: duration,
+                    innerText: target,
+                    snap: { innerText: 1 },
+                    ease: 'power1.inOut'
+                });
+            });
+        }
+    });
+
+    // Smooth Scroll Enhancement
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            
+            gsap.to(window, {
+                duration: 1,
+                scrollTo: {
+                    y: target,
+                    offsetY: 70
+                },
+                ease: 'power2.inOut'
+            });
+        });
+    });
+
+    // Parallax Effect
+    document.addEventListener('mousemove', (e) => {
+        const moveX = (e.pageX - window.innerWidth/2) * 0.01;
+        const moveY = (e.pageY - window.innerHeight/2) * 0.01;
+
+        gsap.to('.hero img', {
+            duration: 1,
+            x: moveX,
+            y: moveY,
+            ease: 'power1.out'
+        });
+    });
+
+    // Image Loading Animation
+    const images = document.querySelectorAll('img');
+    images.forEach(img => {
+        img.addEventListener('load', function() {
+            this.style.animation = 'fadeIn 0.5s ease-in';
+        });
+    });
+
+    // Enhanced Mobile Menu
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuToggle.addEventListener('click', function() {
+        mobileMenu.classList.toggle('hidden');
+        gsap.from('#mobile-menu a', {
+            duration: 0.3,
+            y: 20,
+            opacity: 0,
+            stagger: 0.1,
+            ease: 'power2.out'
+        });
+    });
+});
+
+// Preloader
+window.addEventListener('load', function() {
+    const preloader = document.createElement('div');
+    preloader.className = 'preloader';
+    preloader.innerHTML = `
+        <div class="spinner"></div>
+    `;
+    document.body.appendChild(preloader);
+
+    gsap.to(preloader, {
+        duration: 1,
+        opacity: 0,
+        onComplete: () => preloader.remove()
+    });
+});
+
+// Performance Optimization
+document.addEventListener('scroll', () => {
+    requestAnimationFrame(() => {
+        const scrolled = window.pageYOffset;
+        const header = document.querySelector('header');
+        
+        if (scrolled > 100) {
+            header.classList.add('backdrop-blur-md', 'bg-white/90');
+        } else {
+            header.classList.remove('backdrop-blur-md', 'bg-white/90');
+        }
+    });
+}, { passive: true });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</body>
+</html>
