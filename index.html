@@ -1,9 +1,29 @@
 <!DOCTYPE html>
-<html lang="cs">
+<html lang="cs" itemscope itemtype="http://schema.org/SportsOrganization">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zeus Sport | Specialista na týmové sporty</title>
+    <meta name="description" content="Zeus Sport - Váš partner pro sportovní vybavení v Brně. Specializujeme se na fotbalové týmy, sportovní kluby a vybavení. Nabízíme kvalitní sportovní potřeby pro profesionály i amatéry.">
+    <meta name="keywords" content="sportovní vybavení Brno, fotbalové vybavení, sportovní týmy, fotbalové dresy, sportovní oblečení, sportovní potřeby, fotbalové kopačky, sportovní kluby Brno, fotbalové vybavení Brno">
+    <meta name="author" content="Zeus Sport">
+    <meta name="robots" content="index, follow">
+    <meta name="geo.region" content="CZ">
+    <meta name="geo.placename" content="Brno">
+    <link rel="canonical" href="https://www.zeusport.cz/">
+    <title>Zeus Sport Brno | Sportovní vybavení a dresy pro fotbalové týmy</title>
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.zeusport.cz/">
+    <meta property="og:title" content="Zeus Sport Brno | Sportovní vybavení pro fotbalové týmy">
+    <meta property="og:description" content="Specialisté na sportovní vybavení v Brně. Kvalitní dresy, kopačky a vybavení pro fotbalové týmy a sportovní kluby.">
+    <meta property="og:image" content="https://www.zeusport.cz/images/zeus-sport-og.jpg">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Zeus Sport Brno | Sportovní vybavení pro fotbalové týmy">
+    <meta name="twitter:description" content="Specialisté na sportovní vybavení v Brně. Kvalitní dresy, kopačky a vybavení pro fotbalové týmy a sportovní kluby.">
+    <meta name="twitter:image" content="https://www.zeusport.cz/images/zeus-sport-twitter.jpg">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -199,14 +219,40 @@
         }
     </style>
 </head>
-<body class="font-sans antialiased text-gray-800">
-    <!-- Header -->
-    <header class="fixed w-full bg-white shadow-md z-50">
+<body class="font-sans antialiased text-gray-800" itemscope itemtype="http://schema.org/SportsOrganization">
+    <!-- Structured Data for Local Business -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsOrganization",
+      "name": "Zeus Sport",
+      "url": "https://www.zeusport.cz",
+      "logo": "https://www.zeusport.cz/images/logo.png",
+      "description": "Specialisté na sportovní vybavení v Brně. Kvalitní dresy, kopačky a vybavení pro fotbalové týmy a sportovní kluby.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Vaše adresa",
+        "addressLocality": "Brno",
+        "postalCode": "602 00",
+        "addressCountry": "CZ"
+      },
+      "telephone": "+420 123 456 789",
+      "email": "info@zeus-sport.cz",
+      "sameAs": [
+        "https://www.facebook.com/zeussport",
+        "https://www.instagram.com/zeussport"
+      ]
+    }
+    </script>
+    <!-- Header with ARIA label for better accessibility -->
+    <header class="fixed w-full bg-white shadow-md z-50" role="banner" aria-label="Hlavní navigace">
         <div class="container mx-auto px-4 py-3">
             <div class="flex justify-between items-center">
                 <div class="flex items-center">
                     <div class="text-3xl font-bold">
-                        <img src="logo_header.svg" alt="Zeus Sport Logo" class="h-10">
+                        <a href="/" aria-label="Zeus Sport - Domovská stránka">
+                            <img src="logo_header.svg" alt="Zeus Sport Logo" class="h-10" width="120" height="40" loading="lazy">
+                        </a>
                     </div>
                 </div>
                 <nav class="hidden md:flex space-x-8" style="align-items: center;">
@@ -247,7 +293,7 @@
         <div class="container mx-auto px-4">
             <div class="flex flex-col md:flex-row items-center">
                 <div class="md:w-1/2 mb-8 md:mb-0">
-                    <h1 class="text-5xl md:text-6xl font-bold mb-4 text-white">
+                    <h1 class="text-5xl md:text-6xl font-bold text-white mb-6">ZEUS SPORT <span class="sr-only">- Vybavení pro sportovní týmy</span>
                         OBLÉKÁME <span class="text-red-600">ŠAMPIONY</span>
                     </h1>
                     <p class="text-lg md:text-xl mb-8 text-gray-300">
@@ -264,7 +310,13 @@
                     </div>
                 </div>
                 <div class="md:w-1/2">
-                    <img src="800-600.png" alt="Zeus Sport týmové vybavení" class="rounded-lg shadow-lg transform rotate-2 border-4 border-red-600">
+                    <img src="800-600.jpg" 
+                         alt="Fotbalové dresy a vybavení značky Zeus Sport" 
+                         class="rounded-lg shadow-lg transform rotate-2 border-4 border-red-600"
+                         width="800" 
+                         height="600" 
+                         loading="lazy"
+                         sizes="(max-width: 768px) 100vw, 50vw">
                 </div>
             </div>
         </div>
@@ -273,7 +325,7 @@
     <!-- Stats Section -->
     <section style="background-color: #161b38;" class="py-16 relative overflow-hidden">
         <div class="absolute inset-0 opacity-10">
-            <img src="1920-1080-2.png" alt="Sport Background" class="w-full h-full object-cover">
+            <img src="1920-1080-2.jpg" alt="Fotbalové hřiště s hráči v akci" class="w-full h-full object-cover" loading="lazy">
         </div>
         <div class="container mx-auto px-4 relative z-10">
             <div class="grid grid-cols-2 md:grid-cols-3 gap-8 text-center">
@@ -310,7 +362,15 @@
             <div class="flex flex-col md:flex-row items-center">
                 <div class="md:w-1/2 mb-8 md:mb-0">
                     <div class="relative">
-                        <img src="800-600-2.png" alt="Zeus Sport historie" class="rounded-lg shadow-lg border-2" style="border-color: #161b38;">
+                        <img src="800-600-2.jpg" 
+                             alt="Historie a tradice značky Zeus Sport" 
+                             class="rounded-lg shadow-lg border-2" 
+                             style="border-color: #161b38;"
+                             width="800" 
+                             height="600" 
+                             loading="lazy"
+                             srcset="800-600-2.png 800w, 400-300-2.png 400w"
+                             sizes="(max-width: 768px) 100vw, 50vw">
                         <div class="absolute -bottom-4 -right-4 bg-red-600 text-white py-2 px-4 rounded-lg shadow-lg">
                             <span class="font-bold">OD ROKU 1999</span>
                         </div>
@@ -495,22 +555,22 @@
 
             <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-8">
                 <div class="bg-white p-4 rounded-lg shadow-md flex items-center justify-center h-62 hover:shadow-lg transition-shadow">
-                    <img src="https://www.zeusport.it/public/gallery/salernitana%20shirt%20arechi%20newsletter.jpg" alt="US Salernitana" class="transform hover:scale-110 transition-transform">
+                    <img src="https://www.zeusport.it/public/gallery/salernitana%20shirt%20arechi%20newsletter.jpg" alt="Fotbalový tým Salernitana" class="transform hover:scale-110 transition-transform">
                 </div>
                 <div class="bg-white p-4 rounded-lg shadow-md flex items-center justify-center h-62 hover:shadow-lg transition-shadow">
-                    <img src="https://www.zeusport.it/public/gallery/sorrento-calcio-away-SOCIAL--.jpg" alt="US Salernitana" class="transform hover:scale-110 transition-transform">
+                    <img src="https://www.zeusport.it/public/gallery/sorrento-calcio-away-SOCIAL--.jpg" alt="Fotbalový tým Sorrento Calcio" class="transform hover:scale-110 transition-transform">
                 </div>
                 <div class="bg-white p-4 rounded-lg shadow-md flex items-center justify-center h-62 hover:shadow-lg transition-shadow">
-                    <img src="https://www.zeusport.it/public/gallery/sorrento%20calcio%20home-social.jpg" alt="US Salernitana" class="transform hover:scale-110 transition-transform">
+                    <img src="https://www.zeusport.it/public/gallery/sorrento%20calcio%20home-social.jpg" alt="Fotbalový tým Sorrento Calcio" class="transform hover:scale-110 transition-transform">
                 </div>
                 <div class="bg-white p-4 rounded-lg shadow-md flex items-center justify-center h-62 hover:shadow-lg transition-shadow">
-                    <img src="https://www.zeusport.it/public/gallery/CROTONE%20NEW%20KIT%2023%2024%20HOME%20SOCIAL.jpg" alt="US Salernitana" class="transform hover:scale-110 transition-transform">
+                    <img src="https://www.zeusport.it/public/gallery/CROTONE%20NEW%20KIT%2023%2024%20HOME%20SOCIAL.jpg" alt="Fotbalový tým Crotone" class="transform hover:scale-110 transition-transform">
                 </div>
                 <div class="bg-white p-4 rounded-lg shadow-md flex items-center justify-center h-62 hover:shadow-lg transition-shadow">
-                    <img src="https://www.zeusport.it/public/gallery/FC%20PRO%20VERCELLI%20NEW%20KIT%2023%2024%20THIRD%20SOCIAL.jpg" alt="US Salernitana" class="transform hover:scale-110 transition-transform">
+                    <img src="https://www.zeusport.it/public/gallery/FC%20PRO%20VERCELLI%20NEW%20KIT%2023%2024%20THIRD%20SOCIAL.jpg" alt="Fotbalový tým FC Pro Vercelli" class="transform hover:scale-110 transition-transform">
                 </div>
                 <div class="bg-white p-4 rounded-lg shadow-md flex items-center justify-center hover:shadow-lg transition-shadow">
-                    <img src="https://www.zeusport.it/public/gallery/PRO-VERCELLI-NEW-KIT-23-24-HOME-BLOG.jpg" alt="US Salernitana" class="transform hover:scale-110 transition-transform">
+                    <img src="https://www.zeusport.it/public/gallery/PRO-VERCELLI-NEW-KIT-23-24-HOME-BLOG.jpg" alt="Fotbalový tým FC Pro Vercelli" class="transform hover:scale-110 transition-transform">
                 </div>
             </div>
         </div>

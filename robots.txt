@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.zeusport.cz/sitemap.xml
+
+# Disallow admin and other sensitive areas
+Disallow: /admin/
+Disallow: /includes/
+Disallow: /logs/
+
+# Allow all image files for better image search
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.png$
+Allow: /*.gif$
+Allow: /*.webp$
+
+# Set crawl delay to prevent server overload
+Crawl-delay: 10
