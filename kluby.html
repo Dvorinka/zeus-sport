@@ -196,12 +196,12 @@
 
         <div class="clubs-grid" id="clubsGrid">
             <div class="club-card" data-name="FC Bizoni UH">
-                <div class="club-logo"><img src="logos/bizoni.png" alt="Bizoni" style="width: 100%; height: 100%; object-fit: contain;"></div>
+                <div class="club-logo"><img src="https://www.bizoniuh.cz/img/logo.png" alt="Bizoni" style="width: 100%; height: 100%; object-fit: contain;"></div>
                 <div class="club-name">FC Bizoni UH</div>
             </div>
 
             <div class="club-card" data-name="TJ Start Brno">
-                <div class="club-logo"><img src="logos/start_brno.png" alt="Start Brno" style="width: 100%; height: 100%; object-fit: contain;"></div>
+                <div class="club-logo"><img src="https://startbrno.cz/images/logo-tj-start-brno.png" alt="Start Brno" style="width: 100%; height: 100%; object-fit: contain;"></div>
                 <div class="club-name">TJ Start Brno</div>
             </div>
         </div>
@@ -227,28 +227,26 @@
             });
         });
 
-        // Club selection functionality
+        // Club selection functionality with redirect
         allClubs.forEach(club => {
             club.addEventListener('click', function() {
                 const clubName = this.getAttribute('data-name');
+                let redirectUrl = '';
                 
-                // Remove previous selections
-                allClubs.forEach(c => c.classList.remove('selected'));
+                // Set the appropriate redirect URL based on club name
+                if (clubName === 'FC Bizoni UH') {
+                    redirectUrl = 'https://729465.myshoptet.com/bizoniuh';
+                } else if (clubName === 'TJ Start Brno') {
+                    redirectUrl = 'https://729465.myshoptet.com/tjstartbrno';
+                }
                 
-                // Add selection to clicked club
-                this.classList.add('selected');
-                
-                // Show selection feedback
-                const originalContent = this.innerHTML;
-                this.style.background = 'linear-gradient(135deg, #27ae60, #229954)';
-                this.querySelector('.club-name').style.color = 'white';
-                
-                setTimeout(() => {
-                    alert(`Vybrali jste si ${clubName}!`);
-                    // Reset styling
-                    this.style.background = 'white';
-                    this.querySelector('.club-name').style.color = '#2c3e50';
-                }, 500);
+                if (redirectUrl) {
+                    // Add visual feedback before redirect
+                    this.style.transform = 'scale(0.98)';
+                    setTimeout(() => {
+                        window.location.href = redirectUrl;
+                    }, 150);
+                }
             });
         });
 
