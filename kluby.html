@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vyberte si svůj klub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kufam:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Kufam', sans-serif;
+            background: white;
+            min-height: 100vh;
+            padding: 30px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 20px 0;
+        }
+
+        .header h1 {
+            font-size: 2.8rem;
+            font-weight: bold;
+            color: #2c3e50;
+            letter-spacing: 1.5px;
+            margin: 20px 0;
+            text-transform: uppercase;
+            padding: 0 15px;
+        }
+
+        .search-container {
+            margin-bottom: 50px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .search-bar {
+            width: 100%;
+            max-width: 600px;
+            padding: 15px 25px;
+            font-size: 1.1rem;
+            border: 2px solid black;
+            border-radius: 50px;
+            outline: none;
+            transition: all 0.3s ease;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            font-family: 'Kufam', sans-serif;
+        }
+
+        .search-bar:focus {
+            border-color: black;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .search-bar::placeholder {
+            color: #999;
+            font-style: italic;
+        }
+
+        .clubs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            padding: 20px 0;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .club-card {
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .club-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s;
+        }
+
+        .club-card:hover::before {
+            left: 100%;
+        }
+
+        .club-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .club-logo {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: white;
+            position: relative;
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+
+        .club-card:hover .club-logo {
+            transform: translateY(-2px);
+        }
+
+        .club-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #2c3e50;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 2;
+            transition: text-decoration 0.3s ease;
+        }
+
+        .club-card:hover .club-name {
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+
+        /* Club logo styles */
+        .club-logo {
+            background: none !important;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+                margin-bottom: 20px;
+            }
+            
+            .clubs-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 20px;
+            }
+            
+            .club-card {
+                padding: 20px;
+            }
+        }
+
+        .search-results {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border-radius: 0 0 15px 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+        }
+
+        .search-container {
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Vyberte si svůj klub</h1>
+        </div>
+
+        <div class="search-container">
+            <input type="text" class="search-bar" placeholder="Hledat klub..." id="searchInput">
+        </div>
+
+        <div class="clubs-grid" id="clubsGrid">
+            <div class="club-card" data-name="FC Bizoni UH">
+                <div class="club-logo"><img src="logos/bizoni.png" alt="Bizoni" style="width: 100%; height: 100%; object-fit: contain;"></div>
+                <div class="club-name">FC Bizoni UH</div>
+            </div>
+
+            <div class="club-card" data-name="TJ Start Brno">
+                <div class="club-logo"><img src="logos/start_brno.png" alt="Start Brno" style="width: 100%; height: 100%; object-fit: contain;"></div>
+                <div class="club-name">TJ Start Brno</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const clubsGrid = document.getElementById('clubsGrid');
+        const allClubs = document.querySelectorAll('.club-card');
+
+        // Search functionality
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            
+            allClubs.forEach(club => {
+                const clubName = club.getAttribute('data-name').toLowerCase();
+                if (clubName.includes(searchTerm)) {
+                    club.style.display = 'block';
+                    club.style.animation = 'fadeIn 0.5s ease';
+                } else {
+                    club.style.display = 'none';
+                }
+            });
+        });
+
+        // Club selection functionality
+        allClubs.forEach(club => {
+            club.addEventListener('click', function() {
+                const clubName = this.getAttribute('data-name');
+                
+                // Remove previous selections
+                allClubs.forEach(c => c.classList.remove('selected'));
+                
+                // Add selection to clicked club
+                this.classList.add('selected');
+                
+                // Show selection feedback
+                const originalContent = this.innerHTML;
+                this.style.background = 'linear-gradient(135deg, #27ae60, #229954)';
+                this.querySelector('.club-name').style.color = 'white';
+                
+                setTimeout(() => {
+                    alert(`Vybrali jste si ${clubName}!`);
+                    // Reset styling
+                    this.style.background = 'white';
+                    this.querySelector('.club-name').style.color = '#2c3e50';
+                }, 500);
+            });
+        });
+
+        // Add fade-in animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeIn {
+                from { opacity: 0; transform: scale(0.8); }
+                to { opacity: 1; transform: scale(1); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Initial animation disabled
+    </script>
+</body>
+</html>
