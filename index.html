@@ -433,6 +433,62 @@
         </div>
     </section>
 
+    <!-- Contact Form Section -->
+    <section id="kontakt-formular" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-5xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="md:flex">
+                    <!-- Contact Form -->
+                    <div class="w-full p-8">
+                        <h2 class="text-3xl font-bold mb-6">Máte dotaz?</h2>
+                        <p class="text-gray-600 mb-8">Neváhejte se na nás obrátit s jakýmkoliv dotazem ohledně naší nabídky. Jsme tu pro vás!</p>
+                        <form id="contact-form" class="space-y-4">
+                            <input type="hidden" name="domain" value="zeusport.eu" />
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Jméno a příjmení *</label>
+                                    <input type="text" id="name" name="name" required 
+                                        class="w-full px-3 py-2 text-sm rounded-lg border border-gray-300 focus:ring-2 focus:ring-red-600 focus:border-transparent transition duration-200"
+                                        placeholder="Vaše celé jméno">
+                                </div>
+                                
+                                <div>
+                                    <label for="email" class="block text-sm font-medium text-gray-700 mb-1">E-mail *</label>
+                                    <input type="email" id="email" name="email" required
+                                        class="w-full px-3 py-2 text-sm rounded-lg border border-gray-300 focus:ring-2 focus:ring-red-600 focus:border-transparent transition duration-200"
+                                        placeholder="vas@email.cz">
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Předmět *</label>
+                                <input type="text" id="subject" name="subject" required
+                                    class="w-full px-3 py-2 text-sm rounded-lg border border-gray-300 focus:ring-2 focus:ring-red-600 focus:border-transparent transition duration-200"
+                                    placeholder="O co se zajímáte?">
+                            </div>
+                            
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Zpráva *</label>
+                                <textarea id="message" name="message" rows="4" required
+                                    class="w-full px-3 py-2 text-sm rounded-lg border border-gray-300 focus:ring-2 focus:ring-red-600 focus:border-transparent transition duration-200"
+                                    placeholder="Jak vám můžeme pomoci?"></textarea>
+                            </div>
+                            
+                            <div class="pt-2">
+                                <button type="submit" 
+                                    class="w-full bg-red-600 text-white text-sm font-medium py-2 px-4 rounded-full hover:shadow-lg transition duration-300 hover:bg-red-700">
+                                    Odeslat zprávu
+                                    <i class="fas fa-arrow-right ml-2"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Timeline Section -->
     <section id="historie" class="py-20 bg-gray-100 overflow-hidden">
         <div class="container mx-auto px-4">
@@ -1077,6 +1133,48 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     menuToggle.addEventListener('click', toggleMenu);
+
+    // Contact form submission
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const submitButton = contactForm.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton.innerHTML;
+            
+            try {
+                // Show loading state
+                submitButton.disabled = true;
+                submitButton.innerHTML = 'Odesílám...';
+                
+                const data = Object.fromEntries(new FormData(contactForm));
+                
+                const res = await fetch('https://sendmail.tdvorak.dev/send', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                
+                const text = await res.text();
+                
+                if (res.ok) {
+                    // Show success message
+                    alert('Děkujeme za vaši zprávu! Brzy se vám ozveme zpět.');
+                    contactForm.reset();
+                } else {
+                    throw new Error(text || 'Něco se pokazilo. Zkuste to prosím znovu.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert(error.message || 'Při odesílání zprávy došlo k chybě. Zkuste to prosím znovu později.');
+            } finally {
+                // Reset button state
+                submitButton.disabled = false;
+                submitButton.innerHTML = originalButtonText;
+            }
+        });
+    }
 
     // Counter animation
     const counters = document.querySelectorAll('.counter');
