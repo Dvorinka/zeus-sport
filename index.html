@@ -16,8 +16,14 @@
     <meta name="geo.position" content="49.8175;15.4730">
     <meta name="ICBM" content="49.8175, 15.4730">
     <title>ZEUS | Sportovní vybavení a dresy pro fotbalové týmy</title>
+    <!-- Preload critical resources -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" as="style">
+    <link rel="preload" href="logo_header.svg" as="image" type="image/svg+xml">
+    <!-- Favicon -->
     <link rel="apple-touch-icon-precomposed" href="icon_zeus.ico" sizes="152x152">
     <link rel="icon" href="icon_zeus.ico" sizes="152x152">
+    <link rel="preload" href="icon_zeus.ico" as="image">
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.zeusport.eu/">
@@ -27,7 +33,6 @@
     <meta property="og:image" content="https://www.zeusport.eu/images/zeus-sport-og.jpg">
     <meta property="og:locale" content="cs_CZ">
     <meta property="og:locale:alternate" content="en_GB">
-    
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="ZEUS | Profesionální sportovní vybavení pro týmy">
@@ -35,43 +40,35 @@
     <meta name="twitter:image" content="https://www.zeusport.eu/images/zeus-sport-twitter.jpg">
     <meta name="twitter:site" content="@zeussport">
     <meta name="twitter:creator" content="@zeussport">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/smooth-scroll/16.1.3/smooth-scroll.min.js"></script>
+    <!-- CSS Resources -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet" media="print" onload="this.media='all'">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet" media="print" onload="this.media='all'">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" media="print" onload="this.media='all'" />
+    <!-- Preload critical images -->
+    <link rel="preload" as="image" href="1920-1080.png" imagesrcset="1920-1080.png 1920w, 1280-720.png 1280w, 800-600.png 800w">
     <style>
         :root {
             --zeus-red: #ff1e1e;
             --zeus-blue: #161b38;
         }
-        
         html {
             scroll-behavior: smooth;
         }
-        
         .hero {
             background-image: linear-gradient(rgba(22, 27, 56, 0.85), rgba(22, 27, 56, 0.85)), url("1920-1080.png");
             background-size: cover;
             background-position: center;
         }
-        
         .team-img {
             transition: transform 0.3s ease;
         }
-        
         .team-img:hover {
             transform: scale(1.05);
         }
-        
         .nav-link {
             position: relative;
         }
-        
         .nav-link::after {
             content: '';
             position: absolute;
@@ -82,49 +79,40 @@
             background-color: #ff1e1e;
             transition: width 0.3s ease;
         }
-        
         .nav-link:hover::after {
             width: 100%;
         }
-
         .product-card {
             transition: all 0.3s ease;
             border-bottom: 3px solid transparent;
         }
-        
         .product-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
             border-bottom: 3px solid #ff1e1e;
         }
-
         .counter {
             font-family: 'Montserrat', sans-serif;
         }
-        
         .btn-zeus {
             background-color: #ff1e1e;
             color: white;
             transition: all 0.3s ease;
         }
-        
         .btn-zeus:hover {
             background-color: #e01313;
             transform: translateY(-2px);
         }
-        
         .section-divider {
             height: 4px;
             width: 80px;
             background-color: #ff1e1e;
             margin: 0 auto;
         }
-        
         .sport-bg {
             position: relative;
             overflow: hidden;
         }
-        
         .sport-bg::before {
             content: '';
             position: absolute;
@@ -142,33 +130,27 @@
             transition: transform 0.3s ease;
             transform-style: preserve-3d;
         }
-
         .hover-3d:hover {
             transform: translateY(-5px) rotateX(5deg);
         }
-
         .gradient-text {
             background: linear-gradient(45deg, #ff1e1e, #ff4b4b);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
-
         .floating {
             animation: floating 3s ease-in-out infinite;
         }
-
         @keyframes floating {
             0% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
             100% { transform: translateY(0); }
         }
-
         .card-shine {
             position: relative;
             overflow: hidden;
         }
-
         .card-shine::before {
             content: '';
             position: absolute;
@@ -185,18 +167,15 @@
             transform: rotate(45deg);
             animation: shine 3s infinite;
         }
-
         @keyframes shine {
             0% { transform: translateX(-100%) rotate(45deg); }
             100% { transform: translateX(100%) rotate(45deg); }
         }
-
         .blur-load {
             background-size: cover;
             background-position: center;
             position: relative;
         }
-
         .blur-load::before {
             content: '';
             position: absolute;
@@ -204,27 +183,22 @@
             animation: pulse 2.5s infinite;
             background: linear-gradient(90deg, #f3f4f6 0%, #e5e7eb 50%, #f3f4f6 100%);
         }
-
         @keyframes pulse {
             0% { opacity: 0; }
             50% { opacity: 0.7; }
             100% { opacity: 0; }
         }
-
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 10px;
         }
-
         ::-webkit-scrollbar-track {
             background: #f1f1f1;
         }
-
         ::-webkit-scrollbar-thumb {
             background: #ff1e1e;
             border-radius: 5px;
         }
-
         ::-webkit-scrollbar-thumb:hover {
             background: #cc1818;
         }
@@ -239,7 +213,7 @@
       "name": "ZEUS",
       "url": "https://www.zeusport.eu",
       "logo": "https://www.zeusport.eu/images/logo.png",
-      "description": "Italská sportovní značka s více než 20letou tradicí. Specializujeme se na týmové sporty a dodáváme vybavení do celé Evropy.",
+      "description": "Italská sportovní značka s více než 20 lety zkušeností v oboru. Specializujeme se na komplexní vybavení pro fotbalové týmy a sportovní kluby po celém světě. Naše filozofie spočívá v poskytování špičkového zákaznického servisu a kvalitních produkt.",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Brno",
@@ -264,7 +238,7 @@
                 <div class="flex items-center">
                     <div class="text-3xl font-bold">
                         <a href="/" aria-label="ZEUS - Domovská stránka">
-                            <img src="logo_header.svg" alt="ZEUS Logo" class="h-10" width="120" height="40" loading="lazy">
+                            <img src="logo_header.svg" alt="ZEUS Logo" class="h-10" width="120" height="40" loading="eager" fetchpriority="high">
                         </a>
                     </div>
                 </div>
@@ -280,8 +254,8 @@
                 </nav>
                 <!-- Mobile menu button -->
                 <div class="md:hidden">
-                    <button id="menu-toggle" class="focus:outline-none">
-                        <i class="fas fa-bars text-2xl" style="color: #161b38;"></i>
+                    <button id="menu-toggle" class="focus:outline-none" aria-label="Otevřít/zavřít menu" aria-expanded="false" aria-controls="mobile-menu">
+                        <i class="fas fa-bars text-2xl" style="color: #161b38;" aria-hidden="true"></i>
                     </button>
                 </div>
             </div>
@@ -307,8 +281,6 @@
             <div class="flex flex-col md:flex-row items-center">
                 <div class="md:w-1/2 mb-8 md:mb-0">
                     <h1 class="text-5xl md:text-6xl font-bold text-white mb-6">ZEUS <span class="block text-xl md:text-2xl mt-2 font-normal">Váš partner pro profesionální sportovní vybavení</span></h1>
-                        <span style="color: white;">OBLÉKÁME <span class="text-red-600">ŠAMPIONY</span>
-                    </h1>
                     <p class="text-lg md:text-xl mb-8 text-gray-300">
                         Italská sportovní značka s více než 20letou tradicí. Specializujeme se na týmové sporty a dodáváme vybavení do více než 50 zemí světa.
                     </p>
@@ -323,13 +295,16 @@
                     </div>
                 </div>
                 <div class="md:w-1/2">
-                    <img src="800-600.jpg" 
-                         alt="Fotbalové dresy a vybavení značky ZEUS" 
-                         class="rounded-lg shadow-lg transform rotate-2 border-4 border-red-600"
-                         width="800" 
-                         height="600" 
-                         loading="lazy"
-                         sizes="(max-width: 768px) 100vw, 50vw">
+                    <img 
+    src="800-600.jpg" 
+    srcset="800-600.jpg 800w, 400-300.jpg 400w"
+    alt="Fotbalové dresy a vybavení značky ZEUS" 
+    class="rounded-lg shadow-lg transform rotate-2 border-4 border-red-600"
+    width="800" 
+    height="600" 
+    loading="lazy"
+    decoding="async"
+    sizes="(max-width: 768px) 100vw, 50vw">
                 </div>
             </div>
         </div>
@@ -338,7 +313,21 @@
     <!-- Stats Section -->
     <section style="background-color: #161b38;" class="py-16 relative overflow-hidden">
         <div class="absolute inset-0 opacity-10">
-            <img src="1920-1080-2.jpg" alt="Fotbalové hřiště s hráči v akci" class="w-full h-full object-cover" loading="lazy">
+            <img 
+    src="1920-1080.png" 
+    alt="Hero background" 
+    class="w-full h-full object-cover" 
+    loading="lazy" 
+    decoding="async"
+    sizes="(max-width: 800px) 100vw, 50vw"
+    srcset="
+        800-600.png 800w,
+        1280-720.png 1280w,
+        1920-1080.png 1920w
+    "
+    width="1920"
+    height="1080"
+>
         </div>
         <div class="container mx-auto px-4 relative z-10">
             <div class="grid grid-cols-2 md:grid-cols-3 gap-8 text-center">
@@ -412,7 +401,7 @@
                 <div class="md:w-1/2 md:pl-12">
                     <h3 class="text-2xl font-bold mb-4" style="color: #161b38;">NÁŠ PŘÍBĚH</h3>
                     <p class="text-gray-700 mb-4">
-                        ZEUS byl založen týmem mladých a ambiciózních podnikatelů, kteří chtěli dosáhnout nejvyšší úrovně ve fotbalu a týmových sportech. Nejprve jako dodavatel fotbalového vybavení pro akademie a amatéry, značka rozšířila nabídku na všechny týmové sporty, dodávající týmové oblečení, doplňky a vybavení.
+                        ZEUS byl založen týmem mladých a ambiciózních podnikatelů, kteří chtěli dosáhnout nejvyšší úrovně ve fotbalu a týmových sportech. Nejprve jako dodavatel fotbalového vybavení pro akademie a amatéry, značka rozšířila nabídku na všechna týmová sporty, dodávající týmové oblečení, doplňky a vybavení.
                     </p>
                     <p class="text-gray-700 mb-6">
                         Po téměř 20 letech od svého vzniku je Zeus známou značkou, která exportuje do více než 50 zemí světa a může se pochlubit více než 50 hrdými zaměstnanci. Úspěch Zeus byl známý díky vzácné a přesné péči, kterou poskytuje svým zákazníkům, přípravě a plnění objednávek do 24 hodin.
@@ -655,13 +644,13 @@
                 <div class="rounded-lg overflow-hidden shadow-lg transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
                     <div class="h-48 bg-cover bg-center" style="background-image: url('522618514_1354705413328476_6397975989269637731_n.jpg')">
                         <div class="h-full w-full flex items-center justify-center bg-gradient-to-t from-black to-transparent bg-opacity-70">
-                            <img src="http://www.startbrno.cz/images/logo-tj-start-brno.png" alt="TJ Start Brno Logo" class="h-24 md:h-32 p-2 bg-white bg-opacity-10 rounded-lg">
+                            <img src="https://www.startbrno.cz/images/logo-tj-start-brno.png" alt="TJ Start Brno Logo" class="h-24 md:h-32 p-2 bg-white bg-opacity-10 rounded-lg">
                         </div>
                     </div>
                     <div class="p-6 bg-white">
                         <h3 class="text-xl font-bold mb-2">TJ Start Brno</h3>
                         <p class="text-gray-600 mb-4">Fotbalový klub založený v roce 1957.</p>
-                        <a href="http://www.startbrno.cz" target="_blank" class="text-red-600 hover:text-red-800 font-medium inline-flex items-center">
+                        <a href="https://www.startbrno.cz" target="_blank" class="text-red-600 hover:text-red-800 font-medium inline-flex items-center">
                             <span>Oficiální web</span>
                             <i class="fas fa-external-link-alt ml-2"></i>
                         </a>
@@ -1019,7 +1008,7 @@
             <!-- Google Map -->
             <div class="w-full lg:w-1/2 px-4 mb-8 lg:mb-0">
                 <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d651.8807546319588!2d16.63153943664676!3d49.19063703333347!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471294e505f44729%3A0xeb4754ebfbd6c836!2sOlomouck%C3%A1%203419%2F7%2C%20618%2000%20Brno-%C5%BDidenice!5e0!3m2!1scs!2scz!4v1746603345718!5m2!1scs!2scz" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d651.8807546319588!2d16.63153943664676!3d49.19063703333347!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471294e505f44729%3A0xeb4754ebfbd6c836!2sOlomouck%C3%A1%203419%2F7%2C%20618%2000%20Brno-%C5%BDidenice!5e0!3m2!1scs!2scz!4v1746603345718!5m2!1scs!2scz" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa s umístěním prodejny ZEUS Sport" aria-label="Interaktivní mapa zobrazující umístění prodejny ZEUS Sport"></iframe>
                 </div>
             </div>
         </div>
@@ -1034,7 +1023,7 @@
                     <img src="logo_footer.svg" alt="ZEUS Logo" class="h-10 mr-3">
                 </div>
                 <p class="text-gray-400 mt-2">
-                    Created by <a href="https://www.tdvorak.dev/" target="_blank">© 2025 TDvorak</a> | Všechna práva vyhrazena<br>
+                    Created by <a href="https://www.tdvorak.dev/" target="_blank"> 2025 TDvorak</a> | Všechna práva vyhrazena<br>
                     Zastupující společnost: WHS sport s.r.o., IČO: 198 66 291
                 </p>
             </div>
@@ -1064,10 +1053,18 @@
 document.addEventListener('DOMContentLoaded', function() {
     const menuToggle = document.getElementById('menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
+    let isMenuOpen = false;
 
-    menuToggle.addEventListener('click', function() {
+    function toggleMenu() {
+        isMenuOpen = !isMenuOpen;
         mobileMenu.classList.toggle('hidden');
-    });
+        menuToggle.setAttribute('aria-expanded', isMenuOpen);
+        
+        // Toggle body scroll when menu is open
+        document.body.style.overflow = isMenuOpen ? 'hidden' : '';
+    }
+
+    menuToggle.addEventListener('click', toggleMenu);
 
     // Counter animation
     const counters = document.querySelectorAll('.counter');
@@ -1127,6 +1124,41 @@ document.addEventListener('DOMContentLoaded', function() {
         },
     });
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- Defer non-critical JavaScript -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
+    
+    <!-- Initialize scripts after DOM is loaded -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize AOS (Animate On Scroll)
+        if (typeof AOS !== 'undefined') {
+            AOS.init({
+                duration: 1200,
+                once: true
+            });
+        }
+
+        // Initialize Swiper if it exists
+        if (typeof Swiper !== 'undefined') {
+            const swiper = new Swiper('.swiper-container', {
+                loop: true,
+                preloadImages: false,
+                lazy: true,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+            });
+        }
+    });
+    </script>
 </body>
 </html>
