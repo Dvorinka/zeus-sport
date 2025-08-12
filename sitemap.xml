@@ -1,49 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>https://www.zeusport.cz/</loc>
+        <loc>https://www.zeusport.eu/</loc>
         <lastmod>2025-07-01</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>https://www.zeusport.cz/#o-nas</loc>
+        <loc>https://www.zeusport.eu/#o-nas</loc>
         <lastmod>2025-07-01</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://www.zeusport.cz/#historie</loc>
+        <loc>https://www.zeusport.eu/#historie</loc>
         <lastmod>2025-07-01</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://www.zeusport.cz/#reference</loc>
+        <loc>https://www.zeusport.eu/#reference</loc>
         <lastmod>2025-07-01</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://www.zeusport.cz/#sponzorovane-tymy</loc>
+        <loc>https://www.zeusport.eu/#sponzorovane-tymy</loc>
         <lastmod>2025-07-01</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://www.zeusport.cz/#katalogy</loc>
+        <loc>https://www.zeusport.eu/#katalogy</loc>
         <lastmod>2025-07-01</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://www.zeusport.cz/#whs-sport</loc>
+        <loc>https://www.zeusport.eu/#whs-sport</loc>
         <lastmod>2025-07-01</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://www.zeusport.cz/#kontakt</loc>
+        <loc>https://www.zeusport.eu/#kontakt</loc>
         <lastmod>2025-07-01</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
